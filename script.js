@@ -721,7 +721,7 @@ function updateVisualSunkRackSlot() {
             badge.textContent = item.number;
             
             // Inline fallback styles in case the canvas layout CSS isn't loaded yet
-            badge.style.cssText = "width: 15px; height: 15px; border-radius: 50%; border: 1px solid #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 8px; font-weight: bold; margin-right: 3px; font-family: monospace;";
+            badge.style.cssText = "width: 15px; height: 15px; border-radius: 50%; border: 1px solid #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 8px; font-weight: bold; margin: 2px;";
             if (item.group === 'small') { badge.style.backgroundColor = '#cccccc'; badge.style.color = '#000'; }
             else if (item.group === 'big') { badge.style.backgroundColor = '#555555'; badge.style.color = '#fff'; }
             else if (item.group === 'black') { badge.style.backgroundColor = '#111111'; badge.style.color = '#fff'; badge.style.borderColor = '#ffaa00'; }
