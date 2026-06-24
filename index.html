@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NEGAPOOL: THE KING OF BILLIARDS '98</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Main Game Viewport Wrapper Frame -->
+    <main class="game-viewport">
+        
+        <!-- KOF '94-'98 Arcade Versus Banner Status Grid Layer -->
+        <div id="kof-versus-hud">
+            <!-- Left Side: Player Team Info -->
+            <div class="kof-team-panel player-side">
+                <div class="avatar-box">P1</div>
+                <div class="meta-box">
+                    <div class="team-name">PLAYER ONE</div>
+                    <div id="p1-resource-tag" class="resource-badge">CURRENCY: OK</div>
+                </div>
+            </div>
+            
+            <!-- Center Vs Round Multiplier Logo Marker -->
+            <div class="kof-vs-center">
+                <div class="vs-text">VS</div>
+                <div id="match-turn-indicator">ROUND 1</div>
+            </div>
+            
+            <!-- Right Side: AI Enemy Team Info -->
+            <div class="kof-team-panel ai-side">
+                <div class="meta-box">
+                    <div id="cpu-name-tag" class="team-name">WAITING CORES...</div>
+                    <div id="cpu-resource-tag" class="resource-badge">RESOURCE: NONE</div>
+                </div>
+                <div id="cpu-avatar-box" class="avatar-box cpu-bg">CPU</div>
+            </div>
+        </div>
+
+        <!-- The Interactive Pool Table Container Mount -->
+        <div id="table-container" class="table-outer-frame default-skin">
+            <canvas id="poolCanvas" width="800" height="400"></canvas>
+            <div id="score-popup-layer" class="popup-overlay"></div>
+        </div>
+        
+        <!-- Sunk Slang Tray Slot -->
+        <div id="sunk-balls-rack">
+            <span class="rack-title">[ SUNK RACK ]:</span>
+            <div id="sunk-balls-tray"></div>
+        </div>
+        
+        <!-- Shot Delayed Strength Power Bar Meter Component -->
+        <div id="strength-meter-container">
+            <div class="meter-title">[ FORCE POWER GAUGE ]</div>
+            <div id="strength-bar-fill"></div>
+        </div>
+    </main>
+
+    <!-- Floating System Panel Settings Drawer Button -->
+    <button id="bubble-toggle-btn" class="bubble-trigger">⚙️</button>
+
+    <!-- Draggable Floating Configuration Console Window Box -->
+    <div id="control-bubble" class="movable-bubble hidden">
+        <div id="bubble-header" class="bubble-drag-bar">
+            <span>[ SYSTEM.SYS MODE CONTROLLER ]</span>
+            <button id="bubble-close" class="close-x">X</button>
+        </div>
+        <div class="bubble-content-scroll">
+            <header class="dos-header">
+                <p>NEGAPOOL ENGINE CORE v2.8</p>
+                <p>C:\GAMES\POOL> CHIP_MENU.EXE</p>
+            </header>
+
+            <section class="user-stats">
+                <h2>[ USER PERFORMANCE STATISTICS ]</h2>
+                <div class="stats-grid" style="font-size:11px; margin-bottom:8px;">
+                    <p>LEVEL: <span id="user-level" class="stat-val">1</span></p>
+                    <p>XP STREAK: <span id="user-xp" class="stat-val">0</span> / 80</p>
+                    <p>SCORE TALLY: <span id="game-score" class="stat-val">0</span></p>
+                </div>
+            </section>
+
+            <!-- Calendar Schedule Mount Wrapper Component -->
+            <section id="exhibition-panel"></section>
+        </div>
+    </div>
+
+<div style="font-size: 9px; padding: 4px; background: #222; border: 1px solid #555; margin-bottom: 8px; display: flex; justify-content: space-between;">
+    <span>ALL-TIME HIGH SCORE:</span>
+    <span id="high-score-badge" style="color: #ffe119; font-weight: bold;">0</span>
+</div>
+
+<!-- Dynamic AI Host Mode Router Panel (Locked until Level 2) -->
+<section id="ai-modes-panel" class="hidden-menu">
+    <h2>[ SELECT GAME OPERATION MODE ]</h2>
+    <div style="display: flex; flex-direction: column; gap: 6px;">
+<!-- UPDATE THE SINGLE PLAYER OPTIONS ROUTER INSIDE INDEX.HTML CONTROL BUBBLE -->
+<button class="menu-router-btn" onclick="ArcadeChallengeEngine.displayChallengeDashboard()">
+    <span class="route-title">A. TRICK-SHOT CHALLENGES</span>
+    <span class="route-desc">> ENTER MINI-OBJECTIVES TO ACCUMULATE XP & BYPASS LOCKS</span>
+</button>
+        
+        <button class="menu-router-btn" onclick="selectGameRoute('challenge')">
+            <span class="route-title">B. CHALLENGE MODE (AI / VS)</span>
+            <span class="route-desc">PASS & PLAY OR ENGAGE STAND-IN BOT</span>
+        </button>
+        
+        <button class="menu-router-btn" onclick="selectGameRoute('exhibition')">
+            <span class="route-title">C. EXHIBITION (20 NPC TOUR)</span>
+            <span class="route-desc">ENGAGE THE 20 ADVANCED BEHAVIOR ENGINE PROFILES</span>
+        </button>
+        <!-- REPLACE THE GENERAL PRO LEAGUE BUTTON WITH THIS SAFE OPTION CARD NODE LINK -->
+<button class="dos-btn" style="color: #ffaa00; border-color: #ffaa00; width: 100%; text-align: left; margin-top: 6px;" 
+        onclick="CareerSystem.initializeTop32VisualTree()">
+    > DEPLOY VISUAL TOP 32 KNOCKOUT BRACKET
+</button>
+
+        <!-- ADD THIS ENTRY OPTION ROUTER BUTTON INSIDE YOUR INDEX.HTML CONTROL MODAL PANEL -->
+<button class="menu-router-btn" onclick="AiBehaviorController.displayDifficultyMenu()">
+    <span class="route-title">D. CONFIG AI PERSONALITY MOTORS</span>
+    <span class="route-desc">> MODULATE VECTOR SHOT ACCURACY & SAFETY BEHAVIOR RATIOS</span>
+</button>
+   
+    </div>
+</section>
+         </section>
+
+            <!-- Expanded Advanced Skins Catalog Module Layout -->
+            <section class="skin-selector">
+                <h2>[ SELECT GAME SKIN CATALOG ]</h2>
+                <div class="skins-scroll-container">
+                    <div id="skin-default" class="skin-item active" onclick="selectSkin('default')">
+                        <span class="skin-name">1. DEFAULT PUNK (B&W)</span>
+                        <span id="lbl-default" class="skin-badge">EQUIPPED</span>
+                    </div>
+                    <div id="skin-acacia" class="skin-item locked" onclick="selectSkin('acacia')">
+                        <span class="skin-name">2. ACACIA WOOD (LVL 8)</span>
+                        <span id="lbl-acacia" class="skin-badge">LOCKED</span>
+                    </div>
+                    <div id="skin-yellow-oak" class="skin-item locked" onclick="selectSkin('yellow-oak')">
+                        <span class="skin-name">3. YELLOW OAK WOOD</span>
+                        <span id="lbl-yellow-oak" class="skin-badge">LOCKED</span>
+                    </div>
+                    <div id="skin-lawn-green" class="skin-item locked" onclick="selectSkin('lawn-green')">
+                        <span class="skin-name">4. LAWN GREEN TEXTURE</span>
+                        <span id="lbl-lawn-green" class="skin-badge">LOCKED</span>
+                    </div>
+                    <div id="skin-crystal-navy" class="skin-item locked" onclick="selectSkin('crystal-navy')">
+                        <span class="skin-name">5. CRYSTAL NAVY BLUE</span>
+                        <span id="lbl-crystal-navy" class="skin-badge">LOCKED</span>
+                    </div>
+                    <div id="skin-auroral-purple" class="skin-item locked" onclick="selectSkin('auroral-purple')">
+                        <span class="skin-name">6. AURORAL PURPLE (CLOUD)</span>
+                        <span id="lbl-auroral-purple" class="skin-badge">LOCKED</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="modes-section" class="mode-selector">
+                <h2>[ SYSTEM COMPATIBILITY MODES ]</h2>
+                <div id="mode-141" class="mode-card variant-active" onclick="switchRules('14.1')">
+                    <h3>MAIN: 14.1 CONTINUOUS</h3>
+                    <p id="rack-status-txt">STATUS: ACTIVE RULESET</p>
+                </div>
+                <div id="mode-snooker" class="mode-card locked-mode">
+                    <h3>FRIENDLY: SNOOKER MODE</h3>
+                    <p id="snooker-status">LOCKED (REQ. LVL 4)</p>
+                </div>
+            </section>
+        </div>
+<!-- ADD THESE EXTRA INTERACTIVE BUTTONS WITHIN YOUR MODE-SELECTOR SECTION IN INDEX.HTML -->
+<section id="career-mode-panel" style="margin-top:12px;">
+    <h2>[ PRO LEAGUE & CAREER ADVANCEMENT ]</h2>
+    <div style="display: flex; flex-direction: column; gap: 4px;">
+        <button class="dos-btn" style="color: #00ff00; border-color: #00ff00;" onclick="CareerSystem.initializeTop8Tournament()">
+            > DEPLOY TOP 8 ELIMINATION TOURNAMENT
+        </button>
+        <button class="dos-btn" style="color: #00ff00; border-color: #00ff00;" onclick="CareerSystem.initializeTop16League()">
+            > ENTER TOP 16 CONTINUOUS POOL LEAGUE
+        </button>
+    </div>
+</section>
+</div>
+    <!-- Scripts Injection Mount Lines -->
+    <script src="script.js"></script>
+    <script src="advancement.js"></script>
+    <script src="career.js"></script>
+    <script src="enviro.js"></script>
+</body>
+</html>
